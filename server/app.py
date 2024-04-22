@@ -152,4 +152,4 @@ def vendor_sweet_by_id(id):
         return jsonify({"error": "VendorSweet not found"}), 404
 
 if __name__ == '__main__':
-    app.run(port=5555, debug=True)
+    app.run(debug=True)
