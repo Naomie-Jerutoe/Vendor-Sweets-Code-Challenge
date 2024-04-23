@@ -5,14 +5,16 @@ from flask_migrate import Migrate
 from flask import Flask, request, make_response, jsonify
 from sqlalchemy.orm.exc import NoResultFound
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 # DATABASE = os.environ.get(
 #     "DB_URI", f"sqlite:///{os.path.join(BASE_DIR, 'app.db')}")
-# DATABASE =  os.environ.get()
+# 
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://my_database_he6p_user:7dCWh8gZ2f6V2YieOfn1mgS4b9wfx7vo@dpg-coh5e0v79t8c73fsrohg-a.oregon-postgres.render.com/vendor_sweet_db'
+app = Flask(__name__, static_url_path='')
+app.config['SQLALCHEMY_DATABASE_URI'] =os.environ.get('DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.json.compact = False
 
